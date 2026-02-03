@@ -1,6 +1,11 @@
+
 using Microsoft.EntityFrameworkCore;            // UseSqlServer, Migrate()
 using Selu383.SP26.Api.Data;                    // AppDbContext
 using Selu383.SP26.Api.Models;                  // Location entity (for seeding)
+
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,13 +26,18 @@ if (string.IsNullOrWhiteSpace(connectionString))
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DataContext") ?? throw new InvalidOperationException("Connection string 'DataContext' not found.")));
+
 var app = builder.Build();
+
 
 // Apply migrations + seed data so tests have at least 3 locations
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    db.Database.Migrate();
+    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+    await db.Database.MigrateAsync();
+}
 
     if (!db.Locations.Any())
     {
@@ -40,6 +50,10 @@ using (var scope = app.Services.CreateScope())
         db.SaveChanges();
     }
 }
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
