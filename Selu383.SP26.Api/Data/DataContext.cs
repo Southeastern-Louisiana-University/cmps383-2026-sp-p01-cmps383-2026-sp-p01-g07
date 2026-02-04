@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Selu383.SP26.Api.Entities; // Add this line!
 
 namespace Selu383.SP26.Api.Data
 {

@@ -21,7 +21,7 @@ namespace Selu383.SP26.Api.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Selu383.SP26.Api.Location", b =>
+            modelBuilder.Entity("Selu383.SP26.Api.Entities.Location", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

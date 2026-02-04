@@ -1,8 +1,8 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Selu383.SP26.Api.Entities; // <-- Ensure this is exactly like this
+namespace Selu383.SP26.Api.Dtos;
 
-public class Location
+public class LocationDto
 {
     public int Id { get; set; }
 
@@ -12,5 +12,6 @@ public class Location
     [Required]
     public string Address { get; set; } = string.Empty;
 
+    [Range(1, int.MaxValue)]
     public int TableCount { get; set; }
 }
