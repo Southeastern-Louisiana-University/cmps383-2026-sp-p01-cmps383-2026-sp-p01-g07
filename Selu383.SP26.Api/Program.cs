@@ -1,8 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Selu383.SP26.Api;
-using Microsoft.EntityFrameworkCore;
 using Selu383.SP26.Api.Data;
-using Selu383.SP26.Api.Entities; // <--- This is the one missing!
+using Selu383.SP26.Api.Entities; 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Selu383.SP26.Api.Entities; // <-- Ensure this is exactly like this
+namespace Selu383.SP26.Api.Entities; // THIS LINE MUST BE EXACT
 
 public class Location
 {
